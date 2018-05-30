@@ -1,0 +1,7 @@
+.product-box {
+  float: left;
+  height: 200px;
+  width: 300px;
+  margin-left: 10px;
+  border: 1px blue;
+}

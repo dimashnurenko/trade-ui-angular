@@ -1,0 +1,15 @@
+<div>
+  <div>
+    <label>Title:
+      <input type="text" [(ngModel)]="title">
+    </label>
+    <label>Description
+      <input type="text" [(ngModel)]="description">
+    </label>
+    <label>Price:
+      <input type="text" [(ngModel)]="price">
+    </label>
+    <input type="file" #fileInput placeholder="Upload file..."/>
+  </div>
+  <button type="button" (click)="createProduct()">Create Product</button>
+</div>

@@ -1,0 +1,19 @@
+<div (click)="createProduct()">
+  Create Product
+</div>
+<div *ngFor="let product of products">
+  <div class="product-box">
+    <div>
+      {{product.title}}
+    </div>
+    <div>
+      {{product.description}}
+    </div>
+    <div>
+      {{product.price}}
+    </div>
+    <div *ngIf="isImageExists(product)">
+      <img [src]="getMainImageUrl(product)" style="width:100px;height:100px;">
+    </div>
+  </div>
+</div>
