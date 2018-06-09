@@ -1,19 +1,19 @@
 import {Component} from '@angular/core';
-import {LoginService} from './login.service';
-import {Token} from "./model/token";
+import {AuthService} from '../../services/auth.service';
+import {Token} from "../../models/token";
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
-  providers: [LoginService]
+  providers: [AuthService]
 })
 export class LoginComponent {
 
   loginForm: FormGroup;
 
-  constructor(private loginService: LoginService) {
+  constructor(private authService: AuthService) {
     this.loginForm = new FormGroup({
       phone: new FormControl(null, Validators.required),
       password: new FormControl(null, Validators.required),
@@ -21,8 +21,13 @@ export class LoginComponent {
   }
 
   login() {
-    // this.loginService.login(this.phone, this.password).subscribe((resp: Token) => {
-    //   localStorage.setItem('token', resp.token);
-    // });
+    console.log('login');
+    const {phone, password} = this.loginForm.controls;
+    if(this.loginForm.valid){
+      this.authService.login(phone.value.trim(), password.value.trim()).subscribe((resp: Token) => {
+        localStorage.setItem('token', resp.token);
+     });
+    }
+
   }
 }

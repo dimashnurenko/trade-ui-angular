@@ -1,0 +1,15 @@
+<div class="login-page">
+  <div class="form">
+    <form class="register-form" [formGroup]="registerForm">
+      <input formControlName="name" type="text" placeholder="name"/>
+      <validator-component [control]="registerForm.controls.name"></validator-component>
+      <input formControlName="password" type="password" placeholder="password"/>
+      <validator-component [control]="registerForm.controls.password"></validator-component>
+      <input formControlName="email" type="text" placeholder="email address"/>
+      <validator-component [control]="registerForm.controls.email"></validator-component>
+      <input formControlName="phone" type="text" placeholder="phone"/>
+      <validator-component [control]="registerForm.controls.phone"></validator-component>
+      <button>create</button>
+      <p class="message">Already registered? <a routerLink="../login">Sign In</a></p>
+    </form>
+</div>

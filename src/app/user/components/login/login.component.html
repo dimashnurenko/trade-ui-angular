@@ -1,6 +1,6 @@
 <div class="login-page">
   <div class="form">
-    <form class="login-form" [formGroup]="loginForm">
+    <form class="login-form" [formGroup]="loginForm" (ngSubmit)="login()">
       <input formControlName="phone" type="text" placeholder="phone"/>
       <validator-component [control]="loginForm.controls.phone"></validator-component>
       <input formControlName="password" type="password" placeholder="password"/>
