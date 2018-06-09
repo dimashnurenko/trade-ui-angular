@@ -7,7 +7,7 @@ import {UrlProvider} from '../common/url-provider';
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
-  styleUrls: ['./products.component.css'],
+  styleUrls: ['./products.component.scss'],
   providers: [ProductsService, CommonHeaders]
 })
 export class ProductsComponent implements OnInit {
