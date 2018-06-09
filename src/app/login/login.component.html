@@ -1,11 +1,17 @@
-<div>
-  <div>
-    <label>Phone</label>
-    <input type="text" [(ngModel)]="phone">
+<div class="login-page">
+  <div class="form">
+    <form class="register-form">
+      <input type="text" placeholder="name"/>
+      <input type="password" placeholder="password"/>
+      <input type="text" placeholder="email address"/>
+      <button>create</button>
+      <p class="message">Already registered? <a href="#">Sign In</a></p>
+    </form>
+    <form class="login-form">
+      <input type="text" placeholder="username"/>
+      <input type="password" placeholder="password"/>
+      <button>login</button>
+      <p class="message">Not registered? <a routerLink="../register">Create an account</a></p>
+    </form>
   </div>
-  <div>
-    <label>Password:</label>
-    <input type="password" [(ngModel)]="password">
-  </div>
-  <button (click)="login()">Login</button>
 </div>
