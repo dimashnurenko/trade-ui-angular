@@ -3,6 +3,7 @@ import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import 'rxjs/Rx';
 
 import {AppComponent} from './app.component';
 import {LoginComponent} from './user/components/login/login.component';
@@ -12,6 +13,10 @@ import {CreateProductComponent} from './create-product/create-product.component'
 import {AppRoutingModule} from './app-routing.module';
 import { RegisterComponent } from './user/components/register/register.component';
 import { ValidatorModule } from './shared/validadors/validator.module';
+import { AuthService } from './user/services/auth.service';
+import { MainComponent } from './main/main.component';
+
+
 
 @NgModule({
   declarations: [
@@ -19,7 +24,8 @@ import { ValidatorModule } from './shared/validadors/validator.module';
     LoginComponent,
     ProductsComponent,
     CreateProductComponent,
-    RegisterComponent
+    RegisterComponent,
+    MainComponent
   ],
   imports: [
     BrowserModule,
@@ -31,7 +37,7 @@ import { ValidatorModule } from './shared/validadors/validator.module';
     MaterialModule,
     ValidatorModule
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

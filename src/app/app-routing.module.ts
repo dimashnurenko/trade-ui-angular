@@ -4,6 +4,7 @@ import { LoginComponent } from './user/components//login/login.component';
 import { RegisterComponent } from './user/components//register/register.component';
 import { ProductsComponent } from './products/products.component';
 import { CreateProductComponent } from './create-product/create-product.component';
+import { MainComponent } from './main/main.component';
 
 export const routes: Routes = [
     { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -22,7 +23,10 @@ export const routes: Routes = [
     {
       path: 'products',
       component: ProductsComponent
-    }
+    },
+    {
+      path: 'main',
+      component: MainComponent}
   ];
 
   @NgModule({

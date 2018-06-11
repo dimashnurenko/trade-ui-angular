@@ -8,5 +8,10 @@
       <button>login</button>
       <p class="message">Not registered? <a routerLink="../register">Create an account</a></p>
     </form>
+    <div *ngIf=showError>
+      <p>
+        Some error from server
+      </p>
+    </div>
   </div>
 </div>
