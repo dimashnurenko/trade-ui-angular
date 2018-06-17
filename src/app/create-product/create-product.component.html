@@ -1,15 +1,19 @@
-<div>
-  <div>
-    <label>Title:
-      <input type="text" [(ngModel)]="title">
-    </label>
-    <label>Description
-      <input type="text" [(ngModel)]="description">
-    </label>
-    <label>Price:
-      <input type="text" [(ngModel)]="price">
-    </label>
-    <input type="file" #fileInput placeholder="Upload file..."/>
+<div class="product-page">
+  <div class="form">
+    <form class="product-form" [formGroup]="productForm" (ngSubmit)="createProduct()">
+      <input formControlName="title" type="text" placeholder="Title"/>
+      <validator-component [control]="productForm.controls.phone"></validator-component>
+      <input formControlName="description" type="text" placeholder="Description"/>
+      <validator-component [control]="productForm.controls.password"></validator-component>
+      <input formControlName="price" type="text" placeholder="Price"/>
+      <validator-component [control]="productForm.controls.password"></validator-component>
+      <input formControlName="file" type="file" placeholder="file"/>
+      <button>next</button>
+    </form>
+    <div *ngIf=showError>
+      <p>
+        Some error from server
+      </p>
+    </div>
   </div>
-  <button type="button" (click)="createProduct()">Create Product</button>
 </div>

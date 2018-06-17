@@ -4,37 +4,32 @@ import {Product} from '../products/model/product';
 import {ImageService} from './image.service';
 import {UrlProvider} from '../common/url-provider';
 import {CommonHeaders} from '../common/http-headers';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-create-product',
   templateUrl: './create-product.component.html',
-  styleUrls: ['./create-product.component.css'],
+  styleUrls: ['./create-product.component.scss'],
   providers: [ProductsService, ImageService, UrlProvider, CommonHeaders]
 })
 export class CreateProductComponent {
 
-  @ViewChild('fileInput') fileInput;
-  title: string;
-  description: string;
-  price: number;
+  showError = false;
 
-  constructor(private productService: ProductsService, private imageService: ImageService) {
+  productForm: FormGroup;
+
+  constructor(private router: Router) {
+    this.productForm = new FormGroup({
+      title: new FormControl(null, Validators.required),
+      description: new FormControl(null, Validators.required),
+      price: new FormControl(null, Validators.required),
+      file: new FormControl(null, Validators.required),
+    });
   }
 
   createProduct() {
-    const product = new Product();
-    product.title = this.title;
-    product.description = this.description;
-    product.price = this.price;
 
-    this.productService.createProduct(product).subscribe((resp: Product) => {
-      const fileBrowser = this.fileInput.nativeElement;
-      const formData = new FormData();
-      if (fileBrowser.files && fileBrowser.files[0]) {
-        formData.append('image', fileBrowser.files[0]);
-      }
-
-      this.imageService.uploadImage(resp, formData);
-    });
   }
 }

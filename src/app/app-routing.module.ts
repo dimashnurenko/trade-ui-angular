@@ -26,7 +26,8 @@ export const routes: Routes = [
     },
     {
       path: 'main',
-      component: MainComponent}
+      component: MainComponent
+    },
   ];
 
   @NgModule({

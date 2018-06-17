@@ -17,4 +17,8 @@ export class MainComponent implements OnInit {
 
   }
 
+  onClick() {
+    this.router.navigate(['../create-product']);
+  }
+
 }
