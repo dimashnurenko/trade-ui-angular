@@ -9,9 +9,12 @@ export class AuthService {
 
   loginState: Subject<boolean> = new Subject();
   loginState$: Observable<boolean>;
+  registerState: Subject<boolean> = new Subject();
+  registerState$: Observable<boolean>;
 
   constructor(private http: HttpClient) {
     this.loginState$ = this.loginState.asObservable();
+    this.registerState$ = this.registerState.asObservable();
   }
 
   login(phone, password) {
@@ -35,10 +38,26 @@ export class AuthService {
     return this.loginState$;
   }
 
-  register(phone, password) {
+  register(name, password, email, phone) {
     const headers = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
-    return this.http.post('http://localhost:8080/api/v1/auth/token',
-      JSON.stringify({phone: phone, password: password}),
-      {headers: headers});
+    return this.http.post('http://localhost:8080/api/v1/users/',
+      JSON.stringify(
+        {
+          "email": email,
+          "name": name,
+          "password": password,
+          "phone": phone
+        }
+      ),
+      {headers: headers})
+      .catch(err =>  Observable.of(err));
+  }
+
+  setRegisterState(state: boolean) {
+    this.registerState.next(state);
+  }
+
+  getRegisterState() {
+    return this.registerState$;
   }
 }
