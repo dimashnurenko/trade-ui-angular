@@ -5,11 +5,12 @@ import {FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import 'rxjs/Rx';
 
+import { CreateProductModule } from './create-product/create-product.module';
+
 import {AppComponent} from './app.component';
 import {LoginComponent} from './user/components/login/login.component';
 import {ProductsComponent} from './products/products.component';
 import {HttpClientModule} from '@angular/common/http';
-import {CreateProductComponent} from './create-product/create-product.component';
 import {AppRoutingModule} from './app-routing.module';
 import { RegisterComponent } from './user/components/register/register.component';
 import { ValidatorModule } from './shared/validadors/validator.module';
@@ -23,7 +24,6 @@ import { MainComponent } from './main/main.component';
     AppComponent,
     LoginComponent,
     ProductsComponent,
-    CreateProductComponent,
     RegisterComponent,
     MainComponent
   ],
@@ -35,7 +35,8 @@ import { MainComponent } from './main/main.component';
     BrowserAnimationsModule,
     AppRoutingModule,
     MaterialModule,
-    ValidatorModule
+    ValidatorModule,
+    CreateProductModule
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]

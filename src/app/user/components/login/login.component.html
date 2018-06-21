@@ -1,11 +1,11 @@
 <div class="login-page">
   <div class="form">
     <form class="login-form" [formGroup]="loginForm" (ngSubmit)="login()">
-      <input formControlName="phone" type="text" placeholder="phone"/>
+      <input class="form-input" formControlName="phone" type="text" placeholder="phone"/>
       <validator-component [control]="loginForm.controls.phone"></validator-component>
-      <input formControlName="password" type="password" placeholder="password"/>
+      <input class="form-input" formControlName="password" type="password" placeholder="password"/>
       <validator-component [control]="loginForm.controls.password"></validator-component>
-      <button>login</button>
+      <button class="form-button">login</button>
       <p class="message">Not registered? <a routerLink="../register">Create an account</a></p>
     </form>
     <div *ngIf=showError>

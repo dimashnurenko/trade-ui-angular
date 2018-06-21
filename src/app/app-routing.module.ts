@@ -3,8 +3,9 @@ import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './user/components//login/login.component';
 import { RegisterComponent } from './user/components//register/register.component';
 import { ProductsComponent } from './products/products.component';
-import { CreateProductComponent } from './create-product/create-product.component';
 import { MainComponent } from './main/main.component';
+import { CreateProductRoutes } from './create-product/create-product-routing.module';
+
 
 export const routes: Routes = [
     { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -17,10 +18,6 @@ export const routes: Routes = [
       component: RegisterComponent
     },
     {
-      path: 'create-product',
-      component: CreateProductComponent
-    },
-    {
       path: 'products',
       component: ProductsComponent
     },
@@ -28,6 +25,7 @@ export const routes: Routes = [
       path: 'main',
       component: MainComponent
     },
+    ...CreateProductRoutes,
   ];
 
   @NgModule({

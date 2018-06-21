@@ -13,7 +13,7 @@ export class ValidatorComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {
-    // console.log(this.control);
+   // console.log(this.control);
   }
 
 }
