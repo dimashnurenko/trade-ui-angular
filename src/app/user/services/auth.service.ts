@@ -1,8 +1,9 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Token} from '../models/token';
-import { Subject, Observable } from 'rxjs';
-import 'rxjs/add/operator/map';
+import { Subject, Observable, pipe,  of } from 'rxjs';
+import { map, catchError } from 'rxjs/operators';
+
 
 @Injectable()
 export class AuthService {
@@ -18,16 +19,18 @@ export class AuthService {
   }
 
   login(phone, password) {
-    console.log('phone', phone);
-    console.log('password', password);
     const headers = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
     return this.http.post('http://localhost:8080/api/v1/auth/token',
       JSON.stringify({phone: phone, password: password}), {headers: headers})
-      .catch(err =>  Observable.of(err))
-  }
-
-  setResponse(response){
-
+      .pipe(catchError(err => of(err)))
+      .subscribe((resp) => {
+        console.log('resp', resp);
+        if(resp.status >= 400){
+          this.setLoginState(false);
+        } else {
+          this.setLoginState(true);
+        }
+     });
   }
 
   setLoginState(state: boolean) {
@@ -40,7 +43,7 @@ export class AuthService {
 
   register(name, password, email, phone) {
     const headers = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
-    return this.http.post('http://localhost:8080/api/v1/users/',
+    return this.http.post('http://localhost:8080/api/v1/auth/',
       JSON.stringify(
         {
           "email": email,
@@ -50,7 +53,14 @@ export class AuthService {
         }
       ),
       {headers: headers})
-      .catch(err =>  Observable.of(err));
+      .pipe(catchError(err => of(err)))
+      .subscribe((resp) => {
+        if(resp.status >= 400){
+          this.setRegisterState(false);
+        } else {
+          this.setRegisterState(true);
+        }
+     });
   }
 
   setRegisterState(state: boolean) {

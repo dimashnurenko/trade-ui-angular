@@ -9,7 +9,7 @@
       <validator-component [control]="registerForm.controls.email"></validator-component>
       <input class="form-input" formControlName="phone" type="text" placeholder="phone"/>
       <validator-component [control]="registerForm.controls.phone"></validator-component>
-      <button class="form-button">create</button>
+      <button class="form-button" [disabled]="formIsSubmited">create</button>
       <p class="message">Already registered? <a routerLink="../login">Sign In</a></p>
     </form>
     <div *ngIf=showError>

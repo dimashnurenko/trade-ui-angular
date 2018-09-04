@@ -1,4 +1,2 @@
-<p *ngIf=control.invalid&&control.touched>
-    error!
-</p>
+<div *ngIf="errorMessage !== null" class="error" >{{errorMessage}}</div>
   

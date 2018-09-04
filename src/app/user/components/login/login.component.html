@@ -5,7 +5,7 @@
       <validator-component [control]="loginForm.controls.phone"></validator-component>
       <input class="form-input" formControlName="password" type="password" placeholder="password"/>
       <validator-component [control]="loginForm.controls.password"></validator-component>
-      <button class="form-button">login</button>
+      <button class="form-button" [disabled]="formIsSubmited">login</button>
       <p class="message">Not registered? <a routerLink="../register">Create an account</a></p>
     </form>
     <div *ngIf=showError>

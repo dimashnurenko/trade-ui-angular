@@ -3,3 +3,7 @@
   padding: 8% 0 0;
   margin: auto;
 }
+
+button:disabled {
+  background-color: lighten($color: #308f62, $amount: 20%)
+}
